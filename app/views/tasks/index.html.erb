@@ -1,0 +1,26 @@
+<h1>Task</h1>
+<div>
+  <%= link_to 'new task', new_task_path %>
+</div>
+
+<br>
+
+<table>
+  <thead>
+    <tr>
+      <th>title</th>
+      <th>Content</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tasks.each do |task| %>
+      <tr>
+        <td><%= task.title %></td>
+        <td><%= task.content %></td>
+        <td><%= link_to 'edit', edit_task_path(task) %></td>
+        <td><%= link_to 'delete', task_path(task), method: 'delete' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
