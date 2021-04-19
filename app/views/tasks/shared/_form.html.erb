@@ -1,7 +1,23 @@
 <%= form_for(task) do |form| %>
-  <%= form.label :title %><br>
-  <%= form.text_field :title %><br>
-  <%= form.label :content %><br>
-  <%= form.text_field :content %><br>
+  <div>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :content %><br>
+    <%= form.text_area :content %>
+  </div>
+
+  <div>
+    <%= form.label :start_time %><br>
+    <%= form.datetime_field :start_time %>
+  </div>
+
+  <div>
+    <%= form.label :end_time %><br>
+    <%= form.datetime_field :end_time %>
+  </div>
+
   <%= form.submit %>
 <% end %>

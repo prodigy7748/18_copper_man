@@ -18,6 +18,9 @@ class TasksController < ApplicationController
     end
   end
 
+  def show
+  end
+
   def edit
   end
 
@@ -28,7 +31,7 @@ class TasksController < ApplicationController
       render :edit
     end
   end
-  
+
   def destroy
     @task.destroy
     redirect_to tasks_path, notice: '任務已刪除！'
@@ -36,7 +39,7 @@ class TasksController < ApplicationController
 
   private
     def task_params
-      params.require(:task).permit(:title, :content)
+      params.require(:task).permit(:title, :content, :start_time, :end_time)
     end
 
     def find_task

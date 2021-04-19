@@ -7,17 +7,19 @@
 
 <table>
   <thead>
-    <tr>
-      <th>title</th>
-      <th>Content</th>
-    </tr>
+    <th>Title</th>
+    <th>Content</th>
+    <th>Start_time</th>
+    <th>End_time</th>
   </thead>
 
   <tbody>
     <% @tasks.each do |task| %>
       <tr>
-        <td><%= task.title %></td>
+        <td><%= link_to task.title, task_path(task) %></td>
         <td><%= task.content %></td>
+        <td><%= task.start_time %></td>
+        <td><%= task.end_time %></td>
         <td><%= link_to 'edit', edit_task_path(task) %></td>
         <td><%= link_to 'delete', task_path(task), method: 'delete' %></td>
       </tr>
