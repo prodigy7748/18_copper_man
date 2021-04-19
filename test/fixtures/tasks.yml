@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  content: MyText
+  start_time: 2021-04-19 22:20:06
+  end_time: 2021-04-19 22:20:06
+  priority: 1
+  status: 1
+
+two:
+  title: MyString
+  content: MyText
+  start_time: 2021-04-19 22:20:06
+  end_time: 2021-04-19 22:20:06
+  priority: 1
+  status: 1
