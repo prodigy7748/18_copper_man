@@ -1,3 +1,9 @@
+<% if task.errors.any? %>
+  <% task.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+  <% end %>
+<% end %>
+
 <%= form_for(task) do |form| %>
   <div>
     <%= form.label :title %><br>
