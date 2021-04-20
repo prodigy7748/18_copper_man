@@ -69,6 +69,22 @@ RSpec.feature "Tasks", type: :feature do
     end
   end
 
+  describe 'show a task' do
+    it 'should show right content of a task' do
+      visit task_path(task)
+      expect(page).to have_content(title)
+      expect(page).to have_content(content)
+    end
+  end
+
+  describe 'delete tasks' do
+    it do
+      delete_task
+      expect(Task.count).to eq(0)
+      expect(page).to have_content('任務已刪除！')
+    end
+  end
+
   def create_task(title: nil, content: nil)
     visit new_task_path
     fill_in '任務名稱', with: title
@@ -81,5 +97,11 @@ RSpec.feature "Tasks", type: :feature do
     fill_in '任務名稱', with: title
     fill_in '內容', with: content
     click_button '更新任務'
+  end
+
+  def delete_task
+    create_task(title: title, content: content)
+    visit tasks_path
+    click_on '刪除'
   end
 end
