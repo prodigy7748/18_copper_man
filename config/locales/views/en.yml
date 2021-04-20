@@ -1,0 +1,23 @@
+en:
+  tasks:
+    heading:
+      index: "Task List"
+      create_task: "Create tasks"
+      view_task: "Task:"
+      edit_task: "Edit Task"
+    link:
+      create_task: "Create a new task"
+      edit_task: "Edit"
+      delete_task: "Delete"
+    table:
+      title: "Task"
+      priority: "Priority"
+      start_time: "Start Time"
+      end_time: "End Time"
+      status: "Status"
+      content: "Content"
+    form:
+      placeholder:
+        title: "e.g. Clean my room"
+        content: "e.g. take garbage out of the bin"
+    back_to_task_list: "Back to Task List"

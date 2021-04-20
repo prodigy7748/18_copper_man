@@ -1,0 +1,16 @@
+zh-TW:
+  activerecord:
+    models:
+      task: "任務"
+    attributes:
+      task:
+        title: "任務名稱"
+        content: "內容"
+    errors:
+      models:
+        task:
+          attributes:
+            title:
+              blank: "不能為空白！"
+            content:
+              blank: "不能為空白！"

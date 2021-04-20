@@ -1,0 +1,8 @@
+zh-TW:
+  tasks:
+    create:
+      notice: "任務新增成功！"
+    update:
+      notice: "任務已更新！"
+    destroy:
+      notice: "任務已刪除！"
