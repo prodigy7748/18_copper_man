@@ -1,0 +1,13 @@
+en:
+  activerecord:
+    models:
+      task: "Task"
+    attributes:
+      task:
+        title: "Title"
+        content: "Content"
+    errors:
+      models:
+        task:
+          attributes:
+            blank: "CAN NOT BE BLANK!"

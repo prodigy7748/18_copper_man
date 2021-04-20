@@ -6,24 +6,26 @@
 
 <%= form_for(task) do |form| %>
   <div>
-    <%= form.label :title, "任務名稱" %><br>
-    <%= form.text_field :title %>
+    <%= form.label :title, t("tasks.table.title") %><br>
+    <%= form.text_field :title, placeholder: t("tasks.form.placeholder.title") %>
   </div>
 
   <div>
-    <%= form.label :content, "內容" %><br>
-    <%= form.text_area :content %>
+    <%= form.label :content, t("tasks.table.content") %><br>
+    <%= form.text_area :content, placeholder: t("tasks.form.placeholder.content") %>
   </div>
 
   <div>
-    <%= form.label :start_time %><br>
+    <%= form.label :start_time, t("tasks.table.start_time") %><br>
     <%= form.datetime_field :start_time %>
   </div>
 
   <div>
-    <%= form.label :end_time %><br>
+    <%= form.label :end_time, t("tasks.table.end_time") %><br>
     <%= form.datetime_field :end_time %>
   </div>
 
-  <%= form.submit "#{action}任務" %>
-<% end %>
+  <%= form.submit %>
+<% end %><br>
+
+<%= link_to t("tasks.back_to_task_list"), tasks_path %>
