@@ -1,0 +1,29 @@
+<% if task.errors.any? %>
+  <% task.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+  <% end %>
+<% end %>
+
+<%= form_for(task) do |form| %>
+  <div>
+    <%= form.label :title, "任務名稱" %><br>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :content, "內容" %><br>
+    <%= form.text_area :content %>
+  </div>
+
+  <div>
+    <%= form.label :start_time %><br>
+    <%= form.datetime_field :start_time %>
+  </div>
+
+  <div>
+    <%= form.label :end_time %><br>
+    <%= form.datetime_field :end_time %>
+  </div>
+
+  <%= form.submit "#{action}任務" %>
+<% end %>
