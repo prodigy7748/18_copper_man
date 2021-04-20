@@ -6,12 +6,12 @@
 
 <%= form_for(task) do |form| %>
   <div>
-    <%= form.label :title %><br>
+    <%= form.label :title, "任務名稱" %><br>
     <%= form.text_field :title %>
   </div>
 
   <div>
-    <%= form.label :content %><br>
+    <%= form.label :content, "內容" %><br>
     <%= form.text_area :content %>
   </div>
 
@@ -25,5 +25,5 @@
     <%= form.datetime_field :end_time %>
   </div>
 
-  <%= form.submit %>
+  <%= form.submit "#{action}任務" %>
 <% end %>
