@@ -9,6 +9,7 @@ Bundler.require(*Rails.groups)
 module TaskManageSystem
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
+    config.time_zone = "Taipei"
     config.load_defaults 6.1
     config.i18n.default_locale = "zh-TW"
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
