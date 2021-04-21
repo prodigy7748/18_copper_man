@@ -30,3 +30,4 @@ en:
         title: "e.g. Clean my room"
         content: "e.g. take garbage out of the bin"
     back_to_task_list: "Back to Task List"
+    start_time_cannot_greater_than_end_time: "can't be greater than end time!"

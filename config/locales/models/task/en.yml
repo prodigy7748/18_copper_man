@@ -6,6 +6,11 @@ en:
       task:
         title: "Title"
         content: "Content"
+        priority: "Priority"
+        status: "Status"
+        created_at: "Created_at"
+        start_time: "Start Time"
+        end_time: "End Time"
     errors:
       models:
         task:

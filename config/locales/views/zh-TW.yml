@@ -30,3 +30,4 @@ zh-TW:
         title: "例：打掃房間"
         content: "例：把垃圾拿出去外面丟"
     back_to_task_list: "回到任務清單"
+    start_time_cannot_greater_than_end_time: "不能在結束時間之後!"
