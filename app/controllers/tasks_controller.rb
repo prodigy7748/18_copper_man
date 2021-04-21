@@ -2,7 +2,7 @@ class TasksController < ApplicationController
   before_action :find_task, only:[:edit, :update, :destroy, :show]
 
   def index
-    @tasks = Task.all
+    @tasks = Task.sorted_by(params[:sort])
   end
 
   def new

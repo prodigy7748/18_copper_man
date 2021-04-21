@@ -3,7 +3,9 @@ require 'rails_helper'
 RSpec.feature 'Tasks', type: :feature do
   let(:title) { Faker::Lorem.sentence }
   let(:content) { Faker::Lorem.paragraph }
-  let(:task) { create(:task, title: title, content: content) }
+  let(:start_time) { Faker::Time.between(from: DateTime.now - 3.day ,to: DateTime.now - 2.day) }
+  let(:end_time) { Faker::Time.between(from: DateTime.now - 1.day, to: DateTime.now) }
+  let(:task) { create(:task, title: title, content: content, start_time: start_time, end_time: end_time) }
 
   describe 'visit task index page' do
     it 'should show all tasks' do
@@ -19,7 +21,7 @@ RSpec.feature 'Tasks', type: :feature do
 
   describe 'creates a new task' do
     scenario 'with title and content' do
-      expect{ create_task(title: title, content: content) }.to change { Task.count }.by(1)
+      expect{ create_task(title: title, content: content, start_time: start_time, end_time: end_time) }.to change { Task.count }.by(1)
       expect(page).to have_content(I18n.t('tasks.create.notice'))
       expect(page).to have_content(title)
       expect(page).to have_content(content)
@@ -85,22 +87,54 @@ RSpec.feature 'Tasks', type: :feature do
     end
   end
 
-  def create_task(title: nil, content: nil)
+  describe 'order by created_at' do
+    before :each do 
+      @tasks = []
+      3.times do
+        task = create(:task)
+        @tasks << task
+      end
+      visit tasks_path
+    end
+
+    it 'order by created_at asc' do
+      click_on I18n.t("tasks.table.created_at")
+      click_on I18n.t("tasks.table.created_at")
+      expect(page).to have_content(
+        /#{@tasks[0][:title]}+#{@tasks[1][:title]}+#{@tasks[2][:title]}/
+      )
+    end
+
+    it 'order by created_at desc' do
+      within('table') do
+        click_on I18n.t("tasks.table.created_at")
+        expect(page).to have_content(
+          /#{@tasks[2][:title]}+#{@tasks[1][:title]}+#{@tasks[0][:title]}/
+        )
+      end
+    end
+  end
+
+    
+
+  def create_task(title: nil, content: nil, start_time: nil, end_time: nil)
     visit new_task_path
     fill_in I18n.t("tasks.table.title"), with: title
     fill_in I18n.t("tasks.table.content"), with: content
-    click_button '新增任務'
+    fill_in I18n.t("tasks.table.start_time"), with: start_time
+    fill_in I18n.t("tasks.table.end_time"), with: end_time
+    find('input[name="commit"]').click
   end
 
   def update_task(title: nil, content: nil)
     visit edit_task_path(task)
     fill_in I18n.t("tasks.table.title"), with: title
     fill_in I18n.t("tasks.table.content"), with: content
-    click_button I18n.t('tasks.link.edit_task')
+    find('input[name="commit"]').click
   end
 
   def delete_task
-    create_task(title: title, content: content)
+    create_task(title: title, content: content, start_time: start_time, end_time: end_time)
     visit tasks_path
     click_on I18n.t('tasks.link.delete_task')
   end

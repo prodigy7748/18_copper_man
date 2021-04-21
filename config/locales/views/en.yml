@@ -12,6 +12,7 @@ en:
     table:
       title: "Task"
       priority: "Priority"
+      created_at: "Created_at"
       start_time: "Start Time"
       end_time: "End Time"
       status: "Status"
