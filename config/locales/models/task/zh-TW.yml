@@ -6,11 +6,20 @@ zh-TW:
       task:
         title: "任務名稱"
         content: "內容"
+        priority: "重要性"
+        status: "目前狀態"
+        created_at: "建立時間"
+        start_time: "開始時間"
+        end_time: "結束時間"
     errors:
       models:
         task:
           attributes:
             title:
+              blank: "不能為空白！"
+            start_time:
+              blank: "不能為空白！"
+            end_time:
               blank: "不能為空白！"
             content:
               blank: "不能為空白！"
