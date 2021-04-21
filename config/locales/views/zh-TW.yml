@@ -7,12 +7,12 @@ zh-TW:
       edit_task: "更新任務"
     link:
       create_task: "新增任務"
-      view_task: "詳細內容"
       edit_task: "更新任務"
       delete_task: "刪除任務"
     table:
       title: "任務名稱"
       priority: "優先度"
+      created_at: "建立時間"
       start_time: "開始時間"
       end_time: "結束時間"
       status: "目前狀態"

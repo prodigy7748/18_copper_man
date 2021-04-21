@@ -1,15 +1,12 @@
 <h2><%= t("tasks.heading.index") %></h2>
-<div>
-  <%= link_to t("tasks.link.create_task"), new_task_path %>
-</div>
-
+<div><%= link_to t("tasks.link.create_task"), new_task_path %></div>
 <br>
 
 <table id="task_index_table">
   <thead>
     <th><%= t("tasks.table.title") %></th>
     <th><%= t("tasks.table.content") %></th>
-    <th><%= t("tasks.table.start_time") %></th>
+    <th><%= sortable("created_at", t("tasks.table.created_at")) %></th>
     <th><%= t("tasks.table.end_time") %></th>
   </thead>
 
@@ -18,8 +15,8 @@
       <tr>
         <td><%= link_to task.title, task_path(task) %></td>
         <td><%= task.content %></td>
-        <td><%= task.start_time %></td>
-        <td><%= task.end_time %></td>
+        <td><%= task.created_at.strftime("%Y.%m.%d") %></td>
+        <td><%= task.end_time.strftime("%Y.%m.%d") %></td>
         <td><%= link_to t('tasks.link.edit_task'), edit_task_path(task) %></td>
         <td><%= link_to t('tasks.link.delete_task'), task_path(task), method: 'delete', data: { confirm: t('are_you_sure') } %></td>
       </tr>
