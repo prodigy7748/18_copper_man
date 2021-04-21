@@ -87,35 +87,40 @@ RSpec.feature 'Tasks', type: :feature do
     end
   end
 
-  describe 'order by created_at' do
-    before :each do 
-      @tasks = []
-      3.times do
-        task = create(:task)
-        @tasks << task
+  describe 'sort by columns' do
+    before do
+      1.upto(3) do |i|
+        Task.create(title: "title #{i}", content: "content #{i}", start_time: "2021/Apr/0#{i} 10:30:00", end_time: "2021/Apr/2#{i} 18:35:00")
       end
       visit tasks_path
     end
 
     it 'order by created_at asc' do
-      click_on I18n.t("tasks.table.created_at")
-      click_on I18n.t("tasks.table.created_at")
       expect(page).to have_content(
-        /#{@tasks[0][:title]}+#{@tasks[1][:title]}+#{@tasks[2][:title]}/
+        /title 1.*title 2.*title 3/
       )
     end
 
     it 'order by created_at desc' do
-      within('table') do
-        click_on I18n.t("tasks.table.created_at")
-        expect(page).to have_content(
-          /#{@tasks[2][:title]}+#{@tasks[1][:title]}+#{@tasks[0][:title]}/
-        )
-      end
+      click_on I18n.t("tasks.table.created_at")
+      expect(page).to have_content(
+        /title 3.*title 2.*title 1/
+      )
+    end
+
+    it 'order by end_time asc' do
+      expect(page).to have_content(
+        /title 1.*title 2.*title 3/
+      )
+    end
+
+    it 'order by end_time desc' do
+      click_on I18n.t("tasks.table.end_time")
+      expect(page).to have_content(
+        /title 3.*title 2.*title 1/
+      )
     end
   end
-
-    
 
   def create_task(title: nil, content: nil, start_time: nil, end_time: nil)
     visit new_task_path

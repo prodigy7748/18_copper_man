@@ -25,3 +25,4 @@
 4. Run $ heroku create
 5. Run $ git push heroku master or run $ git push heroku (your branch name):master to push another branch
 6. Run $ heroku run rails db:migrate if this is your first time pushing code
+7. https://warm-spire-63971.herokuapp.com/
