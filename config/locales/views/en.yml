@@ -5,6 +5,14 @@ en:
       create_task: "Create tasks"
       view_task: "Task:"
       edit_task: "Edit Task"
+    priority:
+      low: "Low"
+      medium: "Medium"
+      high: "High"
+    status:
+      pending: "Pending"
+      processing: "Processing"
+      completed: "Completed"
     link:
       create_task: "Create a new task"
       edit_task: "Edit"

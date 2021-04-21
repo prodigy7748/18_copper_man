@@ -5,13 +5,21 @@ zh-TW:
       create_task: "新增任務"
       view_task: "任務："
       edit_task: "更新任務"
+    priority:
+      low: "低"
+      medium: "中"
+      high: "高"
+    status:
+      pending: "待處理"
+      processing: "進行中"
+      completed: "已完成"
     link:
       create_task: "新增任務"
       edit_task: "更新任務"
       delete_task: "刪除任務"
     table:
       title: "任務名稱"
-      priority: "優先度"
+      priority: "重要性"
       created_at: "建立時間"
       start_time: "開始時間"
       end_time: "結束時間"

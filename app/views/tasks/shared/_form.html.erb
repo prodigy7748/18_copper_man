@@ -16,6 +16,22 @@
   </div>
 
   <div>
+    <%= form.label :priority, t("tasks.table.priority") %>
+    <%= form.select(:priority, options_for_select(
+      [[t("tasks.priority.low"), "low"],
+       [t("tasks.priority.medium"), "medium"], 
+       [t("tasks.priority.high"), "high"]])) %>
+  </div>
+
+  <div>
+    <%= form.label :status, t("tasks.table.status") %>
+    <%= form.select(:status, options_for_select(
+      [[t("tasks.status.pending"), "pending"],
+       [t("tasks.status.processing"), "processing"], 
+       [t("tasks.status.completed"), "completed"]])) %>
+  </div>
+
+  <div>
     <%= form.label :start_time, t("tasks.table.start_time") %><br>
     <%= form.datetime_field :start_time %>
   </div>
