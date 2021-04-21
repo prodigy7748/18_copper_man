@@ -17,5 +17,9 @@ zh-TW:
           attributes:
             title:
               blank: "不能為空白！"
+            start_time:
+              blank: "不能為空白！"
+            end_time:
+              blank: "不能為空白！"
             content:
               blank: "不能為空白！"

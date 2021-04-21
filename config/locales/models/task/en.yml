@@ -15,4 +15,11 @@ en:
       models:
         task:
           attributes:
-            blank: "CAN NOT BE BLANK!"
+            title:
+              blank: "CAN NOT BE BLANK!"
+            content:
+              blank: "CAN NOT BE BLANK!"
+            start_time:
+              blank: "CAN NOT BE BLANK!"
+            end_time:
+              blank: "CAN NOT BE BLANK!"
