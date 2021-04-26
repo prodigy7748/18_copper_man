@@ -5,6 +5,7 @@ en:
       create_task: "Create tasks"
       view_task: "Task:"
       edit_task: "Edit Task"
+      search_result: "Search Results"
     priority:
       low: "Low"
       medium: "Medium"

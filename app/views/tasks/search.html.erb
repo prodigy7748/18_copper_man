@@ -1,0 +1,28 @@
+<h2><%= t("tasks.heading.search_result") %></h2>
+<br>
+
+<table id="task_index_table">
+  <thead>
+    <th><%= t("tasks.table.title") %></th>
+    <th><%= t("tasks.table.content") %></th>
+    <th><%= t("tasks.table.priority") %></th>
+    <th><%= t("tasks.table.status") %></th>
+    <th><%= sortable("created_at", t("tasks.table.created_at")) %></th>
+    <th><%= sortable("end_time", t("tasks.table.end_time")) %></th>
+  </thead>
+
+  <tbody>
+    <% @results.each do |task| %>
+      <tr>
+        <td><%= link_to task.title, task_path(task) %></td>
+        <td><%= task.content %></td>
+        <td><%= t("tasks.priority.#{task.priority}") %></td>
+        <td><%= t("tasks.status.#{task.status}") %></td>
+        <td><%= task.created_at.strftime("%Y/%m/%d %H:%M") %></td>
+        <td><%= task.end_time.strftime("%Y/%m/%d %H:%M") %></td>
+        <td><%= link_to t('tasks.link.edit_task'), edit_task_path(task) %></td>
+        <td><%= link_to t('tasks.link.delete_task'), task_path(task), method: 'delete', data: { confirm: t('are_you_sure') } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -37,6 +37,15 @@ class TasksController < ApplicationController
     redirect_to tasks_path, notice: t('tasks.destroy.notice')
   end
 
+  def search  
+    if params[:search].blank?  
+      redirect_to root_path, notice: "搜尋欄不能為空白！"
+    else  
+      @parameter = params[:search].downcase  
+      @results = Task.all.where("lower(title) LIKE :search", search: "%#{@parameter}%") 
+    end  
+  end
+
   private
     def task_params
       params.require(:task).permit(:title, :content, :start_time, :end_time, :priority, :status)

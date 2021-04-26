@@ -50,6 +50,7 @@ RSpec.feature 'Tasks', type: :feature do
 
     scenario 'with new_title and new_content' do
       update_task(title: new_title, content: new_content)
+      expect(page).to have_content(I18n.t('tasks.edit.notice'))
       expect(page).to have_content(new_title)
       expect(page).to have_content(new_content)
     end

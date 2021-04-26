@@ -11,9 +11,10 @@
   </head>
 
   <body>
-    <%= link_to "中文版", :locale => "zh-TW" %>
-    <%= link_to "English", :locale => "en" %>
-    <%= notice if notice %>
-    <%= yield %>
+    <%= render '/navbar' %>
+    <div><%= notice if notice %></div>
+    <div class="m-3">
+      <%= yield %>
+    </div>
   </body>
 </html>

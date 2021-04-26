@@ -5,6 +5,7 @@ zh-TW:
       create_task: "新增任務"
       view_task: "任務："
       edit_task: "更新任務"
+      search_result: "搜尋結果"
     priority:
       low: "低"
       medium: "中"
