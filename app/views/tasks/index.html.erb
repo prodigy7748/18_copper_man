@@ -15,7 +15,7 @@
   <thead>
     <th><%= t("tasks.table.title") %></th>
     <th><%= t("tasks.table.content") %></th>
-    <th><%= t("tasks.table.priority") %></th>
+    <th><%= sortable("priority",t("tasks.table.priority")) %></th>
     <th><%= t("tasks.table.status") %></th>
     <th><%= sortable("created_at", t("tasks.table.created_at")) %></th>
     <th><%= sortable("end_time", t("tasks.table.end_time")) %></th>

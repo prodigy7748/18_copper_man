@@ -1,7 +1,7 @@
 class Task < ApplicationRecord
   include Filterable
   
-  
+
   enum priority: { low: 0, medium: 1, high: 2 }
   enum status: { pending: 0, processing: 1, completed: 2 }
 
@@ -20,6 +20,8 @@ class Task < ApplicationRecord
       order("created_at #{direction}")
     when /^end_time_/
       order("end_time #{direction}")
+    when /^priority_/
+      order("priority #{direction}")
     end
   }
 

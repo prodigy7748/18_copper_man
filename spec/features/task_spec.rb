@@ -88,38 +88,63 @@ RSpec.feature 'Tasks', type: :feature do
     end
   end
 
-  describe 'sort by columns' do
-    before do
-      1.upto(3) do |i|
-        Task.create(title: "title #{i}", content: "content #{i}", start_time: "2021/Apr/0#{i} 10:30:00", end_time: "2021/Apr/2#{i} 18:35:00")
+  describe 'sort by features' do
+    describe 'start_time & end_time'do 
+      before do
+        1.upto(3) do |i|
+          Task.create(title: "title #{i}", content: "content #{i}", start_time: "2021/Apr/0#{i} 10:30:00", end_time: "2021/Apr/2#{i} 18:35:00")
+        end
+        visit tasks_path
       end
-      visit tasks_path
+
+      it 'order by created_at asc' do
+        expect(page).to have_content(
+          /title 1.*title 2.*title 3/
+        )
+      end
+
+      it 'order by created_at desc' do
+        click_on I18n.t("tasks.table.created_at")
+        expect(page).to have_content(
+          /title 3.*title 2.*title 1/
+        )
+      end
+
+      it 'order by end_time asc' do
+        expect(page).to have_content(
+          /title 1.*title 2.*title 3/
+        )
+      end
+
+      it 'order by end_time desc' do
+        click_on I18n.t("tasks.table.end_time")
+        expect(page).to have_content(
+          /title 3.*title 2.*title 1/
+        )
+      end
     end
 
-    it 'order by created_at asc' do
-      expect(page).to have_content(
-        /title 1.*title 2.*title 3/
-      )
-    end
+    describe 'priority' do 
+      before do
+        create(:task, title: 'title 1', priority: 'low')
+        create(:task, title: 'title 2', priority: 'medium')
+        create(:task, title: 'title 3', priority: 'high')
+        visit tasks_path
+      end
 
-    it 'order by created_at desc' do
-      click_on I18n.t("tasks.table.created_at")
-      expect(page).to have_content(
-        /title 3.*title 2.*title 1/
-      )
-    end
+      it 'order by desc' do  
+        click_on I18n.t("tasks.table.priority")
+        expect(page).to have_content(
+          /title 3.*title 2.*title 1/
+        )
+      end
 
-    it 'order by end_time asc' do
-      expect(page).to have_content(
-        /title 1.*title 2.*title 3/
-      )
-    end
-
-    it 'order by end_time desc' do
-      click_on I18n.t("tasks.table.end_time")
-      expect(page).to have_content(
-        /title 3.*title 2.*title 1/
-      )
+      it 'order by asc' do
+        2.times do click_on I18n.t("tasks.table.priority") end
+        expect(page).to have_content(
+          /title 1.*title 2.*title 3/
+        )
+      end
     end
   end
 
