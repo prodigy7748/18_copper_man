@@ -26,9 +26,13 @@ zh-TW:
       end_time: "結束時間"
       status: "目前狀態"
       content: "內容"
+      filter: "狀態篩選"
     form:
       placeholder:
         title: "例：打掃房間"
         content: "例：把垃圾拿出去外面丟"
     back_to_task_list: "回到任務清單"
     start_time_cannot_greater_than_end_time: "不能在結束時間之後!"
+    blank_search_bar: "搜尋欄不能為空白！!"
+    search_bar: "以任務標題搜尋"
+    search_button: "搜尋"

@@ -12,7 +12,9 @@
 
   <body>
     <%= render '/navbar' %>
-    <div><%= notice if notice %></div>
+    <% if notice %>
+      <div class="alert alert-warning text-center"><%= notice %></div>
+    <% end %>
     <div class="m-3">
       <%= yield %>
     </div>

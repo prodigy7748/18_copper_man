@@ -2,7 +2,11 @@ class TasksController < ApplicationController
   before_action :find_task, only:[:edit, :update, :destroy, :show]
 
   def index
-    @tasks = Task.sorted_by(params[:sort])
+    if params[:sort]
+      @tasks = Task.sorted_by(params[:sort])
+    else
+      @tasks = Task.filter(params.slice(:status, :title))
+    end
   end
 
   def new
@@ -35,15 +39,6 @@ class TasksController < ApplicationController
   def destroy
     @task.destroy
     redirect_to tasks_path, notice: t('tasks.destroy.notice')
-  end
-
-  def search  
-    if params[:search].blank?  
-      redirect_to root_path, notice: "搜尋欄不能為空白！"
-    else  
-      @parameter = params[:search].downcase  
-      @results = Task.all.where("lower(title) LIKE :search", search: "%#{@parameter}%") 
-    end  
   end
 
   private

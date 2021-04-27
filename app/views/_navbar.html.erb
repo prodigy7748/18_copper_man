@@ -13,10 +13,10 @@
           <%= link_to "English", :locale => "en" %>
         </li>
       </ul>
-      <%= form_tag(search_page_path, :method => "get",   
-          class: 'd-flex') do %> 
-        <%= search_field_tag :search, params[:search], placeholder: "Search", class: "form-control me-2" %>  
-        <%= button_tag "Search", :class => 'btn btn-outline-success',:name => nil%>  
+      <%= form_tag(tasks_path, :method => "get",   
+          class: "d-flex") do %>  
+        <%= search_field_tag :title, params[:title], placeholder: t("tasks.search_bar"), class: "form-control me-2" %>  
+        <%= button_tag t("tasks.search_button"), :class => "btn btn-outline-success w-50",:name => nil%>  
       <% end %>
     </div>
   </div>

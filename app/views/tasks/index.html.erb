@@ -2,6 +2,15 @@
 <div><%= link_to t("tasks.link.create_task"), new_task_path %></div>
 <br>
 
+<%= form_tag tasks_path, method: 'get' do %>
+  <%= select_tag "status", options_for_select([
+    [t("tasks.status.pending"),"pending"],
+    [t("tasks.status.processing"),"processing"],
+    [t("tasks.status.completed"),"completed"]], 
+    params[:status]),  { :include_blank => true} %>
+  <%= submit_tag t("tasks.table.filter") %>
+<% end %>
+
 <table id="task_index_table">
   <thead>
     <th><%= t("tasks.table.title") %></th>

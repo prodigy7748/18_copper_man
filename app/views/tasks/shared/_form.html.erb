@@ -5,17 +5,17 @@
 <% end %>
 
 <%= form_for(task) do |form| %>
-  <div>
+  <div class="form-group">
     <%= form.label :title, t("tasks.table.title") %><br>
-    <%= form.text_field :title, placeholder: t("tasks.form.placeholder.title") %>
+    <%= form.text_field :title, placeholder: t("tasks.form.placeholder.title"), class:"form-control" %>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= form.label :content, t("tasks.table.content") %><br>
-    <%= form.text_area :content, placeholder: t("tasks.form.placeholder.content") %>
+    <%= form.text_area :content, placeholder: t("tasks.form.placeholder.content"), class:"form-control" %>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= form.label :priority, t("tasks.table.priority") %>
     <%= form.select(:priority, options_for_select(
       [[t("tasks.priority.low"), "low"],
@@ -23,7 +23,7 @@
        [t("tasks.priority.high"), "high"]])) %>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= form.label :status, t("tasks.table.status") %>
     <%= form.select(:status, options_for_select(
       [[t("tasks.status.pending"), "pending"],
@@ -39,9 +39,9 @@
   <div>
     <%= form.label :end_time, t("tasks.table.end_time") %><br>
     <%= form.datetime_field :end_time %>
-  </div>
+  </div><br>
 
-  <%= form.submit %>
+  <%= form.submit :class => "btn btn-primary" %>
 <% end %><br>
 
 <%= link_to t("tasks.back_to_task_list"), tasks_path %>

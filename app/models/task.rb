@@ -1,4 +1,7 @@
 class Task < ApplicationRecord
+  include Filterable
+  
+  
   enum priority: { low: 0, medium: 1, high: 2 }
   enum status: { pending: 0, processing: 1, completed: 2 }
 
@@ -19,6 +22,9 @@ class Task < ApplicationRecord
       order("end_time #{direction}")
     end
   }
+
+  scope :filter_by_status, -> (status) { where status: status }
+  scope :filter_by_title, -> (title) { where("lower(title) LIKE ?", "%#{title}%") }
 
   private
     def start_time_cannot_greater_than_end_time
