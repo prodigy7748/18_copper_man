@@ -2,7 +2,11 @@ class TasksController < ApplicationController
   before_action :find_task, only:[:edit, :update, :destroy, :show]
 
   def index
-    @tasks = Task.sorted_by(params[:sort])
+    if params[:sort]
+      @tasks = Task.sorted_by(params[:sort])
+    else
+      @tasks = Task.filter(params.slice(:status, :title))
+    end
   end
 
   def new

@@ -50,6 +50,7 @@ RSpec.feature 'Tasks', type: :feature do
 
     scenario 'with new_title and new_content' do
       update_task(title: new_title, content: new_content)
+      expect(page).to have_content(I18n.t('tasks.edit.notice'))
       expect(page).to have_content(new_title)
       expect(page).to have_content(new_content)
     end
@@ -119,6 +120,27 @@ RSpec.feature 'Tasks', type: :feature do
       expect(page).to have_content(
         /title 3.*title 2.*title 1/
       )
+    end
+  end
+
+  describe 'search feature' do
+    before :each do
+      create(:task, title: "aaa", status: "pending")
+      create(:task, title: "bbb", status: "completed")
+      visit tasks_path
+    end
+
+    it 'with titles' do
+      fill_in :title, with: "aaa"
+      click_on I18n.t('tasks.search_button')
+      expect(page).to have_content('aaa')
+    end
+
+    it 'with dropdown status' do
+      find('#status').click
+      select I18n.t('tasks.status.pending')
+      click_on I18n.t('tasks.filter_button')
+      expect(page).to have_content(I18n.t('tasks.status.pending'))
     end
   end
 

@@ -5,6 +5,7 @@ en:
       create_task: "Create tasks"
       view_task: "Task:"
       edit_task: "Edit Task"
+      search_result: "Search Results"
     priority:
       low: "Low"
       medium: "Medium"
@@ -30,4 +31,7 @@ en:
         title: "e.g. Clean my room"
         content: "e.g. take garbage out of the bin"
     back_to_task_list: "Back to Task List"
-    start_time_cannot_greater_than_end_time: "can't be greater than end time!"
+    start_time_cannot_greater_than_end_time: "Can't be greater than end time!"
+    search_bar: "Search with task title"
+    search_button: "Search"
+    filter_button: "Status Filter"

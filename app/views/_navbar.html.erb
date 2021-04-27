@@ -1,0 +1,23 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/"><%= "#{t("site_title")}" %></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item mx-2">
+          <%= link_to "中文版", :locale => "zh-TW" %>
+        </li> 
+        <li class="nav-item">
+          <%= link_to "English", :locale => "en" %>
+        </li>
+      </ul>
+      <%= form_tag(tasks_path, :method => "get",   
+          class: "d-flex") do %>  
+        <%= search_field_tag :title, params[:title], placeholder: t("tasks.search_bar"), class: "form-control me-2" %>  
+        <%= button_tag t("tasks.search_button"), :class => "btn btn-outline-success w-50",:name => nil%>  
+      <% end %>
+    </div>
+  </div>
+</nav>

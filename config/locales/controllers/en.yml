@@ -2,7 +2,7 @@ en:
   tasks:
     create:
       notice: "Task is created!"
-    update:
+    edit:
       notice: "Task is updated!"
     destroy:
       notice: "Task is deleted!"

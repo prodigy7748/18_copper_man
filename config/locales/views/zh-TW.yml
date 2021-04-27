@@ -5,6 +5,7 @@ zh-TW:
       create_task: "新增任務"
       view_task: "任務："
       edit_task: "更新任務"
+      search_result: "搜尋結果"
     priority:
       low: "低"
       medium: "中"
@@ -31,3 +32,6 @@ zh-TW:
         content: "例：把垃圾拿出去外面丟"
     back_to_task_list: "回到任務清單"
     start_time_cannot_greater_than_end_time: "不能在結束時間之後!"
+    search_bar: "以任務標題搜尋"
+    search_button: "搜尋"
+    filter_button: "狀態篩選"
