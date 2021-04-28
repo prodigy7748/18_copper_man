@@ -1,6 +1,6 @@
 class Task < ApplicationRecord
   include Filterable
-  
+  paginates_per 5
 
   enum priority: { low: 0, medium: 1, high: 2 }
   enum status: { pending: 0, processing: 1, completed: 2 }

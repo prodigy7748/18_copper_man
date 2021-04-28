@@ -4,10 +4,11 @@
 
 <%= form_tag tasks_path, method: 'get' do %>
   <%= select_tag "status", options_for_select([
+    [t("tasks.status_search_default"),""],
     [t("tasks.status.pending"),"pending"],
     [t("tasks.status.processing"),"processing"],
     [t("tasks.status.completed"),"completed"]], 
-    params[:status]),  { :include_blank => true} %>
+    params[:status]),  { :include_blank => false } %>
   <%= submit_tag t("tasks.filter_button") %>
 <% end %>
 
@@ -36,3 +37,5 @@
     <% end %>
   </tbody>
 </table>
+
+<%= paginate @tasks %>
