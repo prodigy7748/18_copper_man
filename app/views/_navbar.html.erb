@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="/"><%= "#{t("site_title")}" %></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -13,6 +13,14 @@
           <%= link_to "English", :locale => "en" %>
         </li>
       </ul>
+
+      <%= select_tag "status", options_for_select([
+        [t("tasks.status_search_default"),""],
+        [t("tasks.status.pending"),"pending"],
+        [t("tasks.status.processing"),"processing"],
+        [t("tasks.status.completed"),"completed"]], 
+        params[:status]),{:class => 'btn btn-outline-primary dropdown-toggle mx-2', :onchange => "window.location.replace('/'+'tasks?status='+this.value);"} %>
+
       <%= form_tag(tasks_path, :method => "get",   
           class: "d-flex") do %>  
         <%= search_field_tag :title, params[:title], placeholder: t("tasks.search_bar"), class: "form-control me-2" %>  
