@@ -7,7 +7,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item mx-2">
-          <%= link_to "中文版", :locale => "zh-TW" %>
+          <%= link_to "中文", :locale => "zh-TW" %>
         </li> 
         <li class="nav-item">
           <%= link_to "English", :locale => "en" %>
@@ -18,8 +18,7 @@
         [t("tasks.status_search_default"),""],
         [t("tasks.status.pending"),"pending"],
         [t("tasks.status.processing"),"processing"],
-        [t("tasks.status.completed"),"completed"]], 
-        params[:status]),{:class => 'btn btn-outline-primary dropdown-toggle mx-2', :onchange => "window.location.replace('/'+'tasks?status='+this.value);"} %>
+        [t("tasks.status.completed"),"completed"]]),{:class => 'btn btn-outline-primary dropdown-toggle mx-2', :onchange => "window.location.replace('/'+'tasks?status='+this.value);"} %>
 
       <%= form_tag(tasks_path, :method => "get",   
           class: "d-flex") do %>  
