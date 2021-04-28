@@ -1,25 +1,13 @@
-<h2><%= t("tasks.heading.index") %></h2>
 <div><%= link_to t("tasks.link.create_task"), new_task_path %></div>
-<br>
 
-<%= form_tag tasks_path, method: 'get' do %>
-  <%= select_tag "status", options_for_select([
-    [t("tasks.status_search_default"),""],
-    [t("tasks.status.pending"),"pending"],
-    [t("tasks.status.processing"),"processing"],
-    [t("tasks.status.completed"),"completed"]], 
-    params[:status]),  { :include_blank => false } %>
-  <%= submit_tag t("tasks.filter_button") %>
-<% end %>
-
-<table id="task_index_table">
+<table id="task_index_table", class="table table-striped">
   <thead>
     <th><%= t("tasks.table.title") %></th>
     <th><%= t("tasks.table.content") %></th>
     <th><%= sortable("priority",t("tasks.table.priority")) %></th>
     <th><%= t("tasks.table.status") %></th>
     <th><%= sortable("created_at", t("tasks.table.created_at")) %></th>
-    <th><%= sortable("end_time", t("tasks.table.end_time")) %></th>
+    <th colspan="3"><%= sortable("end_time", t("tasks.table.end_time")) %></th>
   </thead>
 
   <tbody>
@@ -36,6 +24,6 @@
       </tr>
     <% end %>
   </tbody>
-</table>
+</table><br>
 
 <%= paginate @tasks %>
