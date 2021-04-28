@@ -35,3 +35,4 @@ en:
     search_bar: "Search with task title"
     search_button: "Search"
     filter_button: "Status Filter"
+    status_search_default: ""
