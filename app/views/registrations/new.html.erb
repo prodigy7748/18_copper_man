@@ -1,0 +1,24 @@
+<h2>註冊</h2>
+<% if @user.errors.any? %> 
+  <ul>
+    <% @user.errors.full_messages.each do |message| %> 
+        <li><%= message %></li> 
+    <% end %> 
+  </ul>
+<% end %> 
+
+<%= form_for(@user) do |form|%>
+  <%= form.label t('activerecord.attributes.user.email') %>
+  <%= form.text_field :email%>
+  <br>
+  <%= form.label t('activerecord.attributes.user.password_digest') %>
+  <%= form.password_field :password%>
+  <br>
+  <%= form.label t('activerecord.attributes.user.password_confirmation') %>
+  <%= form.password_field :password_confirmation %>
+  <br>
+  <%= form.label t('activerecord.attributes.user.name') %>
+  <%= form.text_field :name %>
+  <br>
+  <%= form.submit t('users.register') %>
+<% end %>

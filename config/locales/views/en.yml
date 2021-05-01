@@ -36,3 +36,6 @@ en:
     search_button: "Search"
     filter_button: "Status Filter"
     status_search_default: "Search with status"
+
+  users:
+    register: "Register"

@@ -36,3 +36,6 @@ zh-TW:
     search_button: "搜尋"
     filter_button: "狀態篩選"
     status_search_default: "以狀態搜尋"
+
+  users:
+    register: "註冊"

@@ -14,6 +14,8 @@
         </li>
       </ul>
 
+      <div class="nav-item mx-2"><%= link_to t('users.register'), sign_up_users_path %></div>
+
       <%= select_tag "status", options_for_select([
         [t("tasks.status_search_default"),""],
         [t("tasks.status.pending"),"pending"],

@@ -2,6 +2,7 @@ zh-TW:
   activerecord:
     models:
       task: "任務"
+      user: "會員"
     attributes:
       task:
         title: "任務名稱"
@@ -11,6 +12,11 @@ zh-TW:
         created_at: "建立時間"
         start_time: "開始時間"
         end_time: "結束時間"
+      user:
+        name: "暱稱"
+        email: "Email"
+        password_digest: "密碼"
+        password_confirmation: "密碼確認"
     errors:
       models:
         task:

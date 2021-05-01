@@ -31,6 +31,7 @@ gem 'rails-i18n', '~> 6.0'
 gem 'bootstrap', '~> 5.0.0.beta2'
 gem 'jquery-rails', '~> 4.4'
 gem 'kaminari', '~> 1.2', '>= 1.2.1'
+gem 'bcrypt', '~> 3.1', '>= 3.1.16'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
