@@ -1,11 +1,12 @@
 require 'rails_helper'
 
 RSpec.feature 'Tasks', type: :feature do
+  let(:user) { create(:user) }
   let(:title) { Faker::Lorem.sentence }
   let(:content) { Faker::Lorem.paragraph }
   let(:start_time) { Faker::Time.between(from: DateTime.now - 3.day ,to: DateTime.now - 2.day) }
   let(:end_time) { Faker::Time.between(from: DateTime.now - 1.day, to: DateTime.now) }
-  let(:task) { create(:task, title: title, content: content, start_time: start_time, end_time: end_time) }
+  let(:task) { create(:task, user_id: user.id, title: title, content: content, start_time: start_time, end_time: end_time) }
 
   describe 'visit task index page' do
     it 'should show all tasks' do
@@ -164,12 +165,11 @@ RSpec.feature 'Tasks', type: :feature do
     it 'with dropdown status' do
       find('#status').click
       select I18n.t('tasks.status.pending')
-      click_on I18n.t('tasks.filter_button')
       expect(page).to have_content(I18n.t('tasks.status.pending'))
     end
   end
 
-  def create_task(title: nil, content: nil, start_time: nil, end_time: nil)
+  def create_task(user_id: user.id, title: nil, content: nil, start_time: nil, end_time: nil)
     visit new_task_path
     fill_in I18n.t("tasks.table.title"), with: title
     fill_in I18n.t("tasks.table.content"), with: content
@@ -178,7 +178,7 @@ RSpec.feature 'Tasks', type: :feature do
     find('input[name="commit"]').click
   end
 
-  def update_task(title: nil, content: nil)
+  def update_task(user_id: user.id, title: nil, content: nil)
     visit edit_task_path(task)
     fill_in I18n.t("tasks.table.title"), with: title
     fill_in I18n.t("tasks.table.content"), with: content
@@ -186,7 +186,7 @@ RSpec.feature 'Tasks', type: :feature do
   end
 
   def delete_task
-    create_task(title: title, content: content, start_time: start_time, end_time: end_time)
+    create_task(user_id: user.id, title: title, content: content, start_time: start_time, end_time: end_time)
     visit tasks_path
     click_on I18n.t('tasks.link.delete_task')
   end

@@ -3,9 +3,9 @@ class TasksController < ApplicationController
 
   def index
     if params[:sort]
-      @tasks = Task.sorted_by(params[:sort]).page(params[:page])
+      @tasks = Task.sorted_by(params[:sort]).page(params[:page]).includes(:user)
     else
-      @tasks = Task.filter(params.slice(:status, :title)).page(params[:page])
+      @tasks = Task.filter(params.slice(:status, :title)).page(params[:page]).includes(:user)
     end
   end
 
