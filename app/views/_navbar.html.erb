@@ -14,19 +14,9 @@
         </li>
       </ul>
 
-      <div class="nav-item mx-2"><%= link_to t('users.register'), sign_up_users_path %></div>
-
-      <%= select_tag "status", options_for_select([
-        [t("tasks.status_search_default"),""],
-        [t("tasks.status.pending"),"pending"],
-        [t("tasks.status.processing"),"processing"],
-        [t("tasks.status.completed"),"completed"]]),{:class => 'btn btn-outline-primary dropdown-toggle mx-2', :onchange => "window.location.replace('/'+'tasks?status='+this.value);"} %>
-
-      <%= form_tag(tasks_path, :method => "get",   
-          class: "d-flex") do %>  
-        <%= search_field_tag :title, params[:title], placeholder: t("tasks.search_bar"), class: "form-control me-2" %>  
-        <%= button_tag t("tasks.search_button"), :class => "btn btn-outline-success w-50",:name => nil%>  
-      <% end %>
+      <div class="nav-item mx-2"><%= link_to t('users.register'), sign_up_user_path %></div>
+      <div class="nav-item mx-2"><%= link_to t('users.sign_in'), sign_in_user_path %></div>
+      <li class="mx-2 list-unstyled">Hi, <%= current_user.name %></li>
     </div>
   </div>
 </nav>

@@ -39,3 +39,4 @@ en:
 
   users:
     register: "Register"
+    sign_in: "Sign In"

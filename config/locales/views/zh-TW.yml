@@ -39,3 +39,4 @@ zh-TW:
 
   users:
     register: "註冊"
+    sign_in: "登入"

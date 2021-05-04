@@ -1,3 +1,18 @@
+<div class="d-flex">
+  <%= select_tag "status", options_for_select([
+    [t("tasks.status_search_default"),""],
+    [t("tasks.status.pending"),"pending"],
+    [t("tasks.status.processing"),"processing"],
+    [t("tasks.status.completed"),"completed"]]),{:class => 'btn btn-outline-primary dropdown-toggle mx-2', :onchange => "window.location.replace('/'+'tasks?status='+this.value);"} %>
+
+  <%= form_tag(tasks_path, :method => "get",   
+      class: "d-flex") do %>  
+    <%= search_field_tag :title, params[:title], placeholder: t("tasks.search_bar"), class: "form-control me-2" %>  
+    <%= button_tag t("tasks.search_button"), :class => "btn btn-outline-success w-50",:name => nil%>  
+  <% end %>
+</div><br>
+      
+
 <div><%= link_to t("tasks.link.create_task"), new_task_path %></div>
 
 <table id="task_index_table", class="table table-striped">
