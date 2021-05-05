@@ -1,11 +1,12 @@
 class TasksController < ApplicationController
   before_action :find_task, only:[:edit, :update, :destroy, :show]
+  before_action :session_required, only: [:index, :create, :edit, :update]
 
   def index
     if params[:sort]
-      @tasks = Task.sorted_by(params[:sort]).page(params[:page]).includes(:user)
+      @tasks = current_user.tasks.sorted_by(params[:sort]).page(params[:page]).includes(:user)
     else
-      @tasks = Task.filter(params.slice(:status, :title)).page(params[:page]).includes(:user)
+      @tasks = Task.filter(params.slice(:status, :title)).where(user_id: current_user.id).page(params[:page]).includes(:user)
     end
   end
 

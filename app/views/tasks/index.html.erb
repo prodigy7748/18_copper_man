@@ -1,6 +1,7 @@
 <div class="d-flex">
   <%= select_tag "status", options_for_select([
     [t("tasks.status_search_default"),""],
+    [t("tasks.status.all_status"),""],
     [t("tasks.status.pending"),"pending"],
     [t("tasks.status.processing"),"processing"],
     [t("tasks.status.completed"),"completed"]]),{:class => 'btn btn-outline-primary dropdown-toggle mx-2', :onchange => "window.location.replace('/'+'tasks?status='+this.value);"} %>

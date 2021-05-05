@@ -7,9 +7,14 @@ class SessionsController < ApplicationController
     user = User.login(params[:user])
     if user
       session[:user_id] = user.id
-      redirect_to root_path, notice: '登入成功'
+      redirect_to root_path, notice: t('users.sign_in_successfully')
     else
-      redirect_to sign_in_users_path, notice: '登入失敗'
+      redirect_to sign_in_user_path, notice: t('users.sign_in_failed')
     end
+  end
+
+  def destroy
+    session[:user_id] = nil
+    redirect_to root_path, notice: t('users.sign_in_failed')
   end
 end

@@ -14,6 +14,7 @@ en:
       pending: "Pending"
       processing: "Processing"
       completed: "Completed"
+      all_status: "All Status"
     link:
       create_task: "Create a new task"
       edit_task: "Edit"
@@ -40,3 +41,6 @@ en:
   users:
     register: "Register"
     sign_in: "Sign In"
+    sign_in_successfully: "You are now signed in"
+    sign_in_failed: "Please input right email and password"
+    sign_in_first: "Please Sign In First"

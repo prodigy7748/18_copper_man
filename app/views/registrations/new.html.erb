@@ -1,4 +1,4 @@
-<h2>註冊</h2>
+<h2><%= t('users.register') %></h2>
 <% if @user.errors.any? %> 
   <ul>
     <% @user.errors.full_messages.each do |message| %> 
@@ -8,17 +8,25 @@
 <% end %> 
 
 <%= form_for(User.new, url:sign_up_user_path) do |form|%>
-  <%= form.label t('activerecord.attributes.user.email') %>
-  <%= form.text_field :email%>
-  <br>
-  <%= form.label t('activerecord.attributes.user.password_digest') %>
-  <%= form.password_field :password%>
-  <br>
-  <%= form.label t('activerecord.attributes.user.password_confirmation') %>
-  <%= form.password_field :password_confirmation %>
-  <br>
-  <%= form.label t('activerecord.attributes.user.name') %>
-  <%= form.text_field :name %>
-  <br>
-  <%= form.submit t('users.register') %>
+  <div class="form-group mb-2">
+    <%= form.label t('activerecord.attributes.user.email'), class:"mb-2
+    " %>
+    <%= form.text_field :email, class:"form-control"%>
+  </div>
+  <div class="form-group mb-2">
+    <%= form.label t('activerecord.attributes.user.password_digest'), class:"mb-2
+    " %>
+    <%= form.password_field :password, class:"form-control"%>
+  </div>
+  <div class="form-group mb-2">
+    <%= form.label t('activerecord.attributes.user.password_confirmation'), class:"mb-2
+    " %>
+    <%= form.password_field :password_confirmation, class:"form-control" %>
+  </div>
+  <div class="form-group mb-2">
+    <%= form.label t('activerecord.attributes.user.name'), class:"mb-2
+    " %>
+    <%= form.text_field :name, class:"form-control" %>
+  </div>
+  <%= form.submit t('users.register'), :class => "btn btn-primary" %>
 <% end %>

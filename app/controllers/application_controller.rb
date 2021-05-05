@@ -9,4 +9,8 @@ class ApplicationController < ActionController::Base
 
     I18n.locale = session[:locale] || I18n.default_locale
   end
+
+  def session_required
+    redirect_to sign_in_user_path, notice: t('users.sign_in_first') unless user_signed_in?
+  end
 end

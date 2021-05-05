@@ -6,6 +6,9 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li>
+          <%= link_to t('homepage'), root_path %>
+        </li>
         <li class="nav-item mx-2">
           <%= link_to "中文", :locale => "zh-TW" %>
         </li> 
@@ -13,10 +16,14 @@
           <%= link_to "English", :locale => "en" %>
         </li>
       </ul>
-
-      <div class="nav-item mx-2"><%= link_to t('users.register'), sign_up_user_path %></div>
-      <div class="nav-item mx-2"><%= link_to t('users.sign_in'), sign_in_user_path %></div>
-      <li class="mx-2 list-unstyled">Hi, <%= current_user.name %></li>
+      
+      <% if current_user %>
+        <li class="mx-2 list-unstyled"><%= link_to '登出', sign_out_user_path, method: 'delete' %></li>
+        <li class="mx-2 list-unstyled">Hi, <%= current_user.name %></li>
+      <% else %>
+        <div class="nav-item mx-2"><%= link_to t('users.register'), sign_up_user_path %></div>
+        <div class="nav-item mx-2"><%= link_to t('users.sign_in'), sign_in_user_path %></div>
+      <% end %>
     </div>
   </div>
 </nav>
